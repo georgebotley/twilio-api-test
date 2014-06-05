@@ -1,6 +1,7 @@
 <?php
+
 /**
- * _config.php - Twilio
+ * config.php - Twilio
  * 
  * Twilio API Configuration
  *
@@ -11,6 +12,12 @@
  *
  */
  
+/**
+ * API Configuration Options
+ * 
+ * - API_URL = The url in which to communicate with the API.
+ */
+define('API_URL', 'https://api.twilio.com/2010-04-01'); 
  
  
  ?>
