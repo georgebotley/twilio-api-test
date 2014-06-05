@@ -25,9 +25,8 @@
 	  * 
 	  * @var string
 	  * @access private
-	  * @static
 	  */
-	 private static $resource = '/2010-04-01/Accounts/API_ACCOUNT_SID/Messages';
+	 private $resource = '/2010-04-01/Accounts/API_ACCOUNT_SID/Messages';
 	 
 	 /**
 	  * From
@@ -37,14 +36,11 @@
 	  * you cannot (for example) spoof messages from your own cell phone number.
 	  *
 	  * REQUIRED BY THIS RESOURCE
-	  *
-	  * (default value: '')
 	  * 
 	  * @var string
 	  * @access private
-	  * @static
 	  */
-	 private static $From = '';
+	 private $From;
 	 
 	 /**
 	  * To
@@ -56,14 +52,11 @@
 	  * proper delivery. If you are sending messages while in trial mode, the 'To' phone number must be verified with Twilio.
 	  *
 	  * REQUIRED BY THIS RESOURCE
-	  *
-	  * (default value: '')
 	  * 
 	  * @var string
 	  * @access private
-	  * @static
 	  */	 
-	 private static $To = '';
+	 private $To;
 	 
 	 /**
 	  * Body
@@ -78,13 +71,10 @@
 	  *
 	  * REQUIRED BY THIS RESOURCE OR USE MediaURL.
 	  *
-	  * (default value: '')
-	  * 
 	  * @var string
 	  * @access private
-	  * @static
 	  */	 
-	 private static $Body = '';
+	 private $Body;
 	 
 	 /**
 	  * MediaUrl
@@ -99,14 +89,11 @@
 	  * Twilio supports image/gif, image/png, and image/jpeg mime-types and accepts many others.
 	  *
 	  * REQUIRED BY THIS RESOURCE OR USE Body.
-	  *
-	  * (default value: '')
 	  * 
 	  * @var string
 	  * @access private
-	  * @static
 	  */	 
-	 private static $MediaUrl = ''; 
+	 private $MediaUrl;
 	 
 	 /**
 	  * StatusCallback
@@ -128,14 +115,11 @@
 	  *		The error code (if any) associated with your message. If your message status is failed or undelivered, the ErrorCode can give you
 	  *		more information about the failure. If the message was delivered successfully, no ErrorCode will be present. The possible values
 	  *		are described here. (https://www.twilio.com/docs/api/rest/message#error-values)
-	  *		
-	  * (default value: '')
-	  * 
+	  *
 	  * @var string
 	  * @access private
-	  * @static
 	  */
-	 private static $StatusCallback = ''; 
+	 private $StatusCallback;
 	 
 	 /**
 	  * ApplicationSid
@@ -144,14 +128,36 @@
 	  * property of this Application. If the StatusCallback parameter above is also passed, the Application's MessageStatusCallback 
 	  * parameter will take precedence.
 	  *
-	  * (default value: '')
-	  * 
 	  * @var string
 	  * @access private
-	  * @static
 	  */
-	 private static $ApplicationSid = ''; 
+	 private $ApplicationSid;
 	 
+	 
+	 /**
+	  * getTo function.
+	  * 
+	  * Return the value of the To variable. 
+	  *
+	  * @access public
+	  * @return void
+	  */
+	 public function getTo() { 
+	 	return $this->To; 
+	 }
+	 
+	 /**
+	  * setTo function.
+	  * 
+	  * Set the value of the To variable.
+	  *
+	  * @access public
+	  * @return void
+	  */
+	 public function setTo($NewTo) { 
+	 	$this->To = $NewTo;
+	 }
+	 	 
  }
  
  
