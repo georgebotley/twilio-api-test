@@ -12,6 +12,6 @@
  */
  
  //Include the initialiser.
- include_once "./core/init.php";
+ include_once "core/init.php";
 
 ?>
