@@ -24,8 +24,6 @@
 	  *
 	  * REQUIRED BY THIS RESOURCE
 	  * 
-	  * (default value: '/2010-04-01/Accounts/API_ACCOUNT_SID/Messages')
-	  * 
 	  * @var string
 	  * @access private
 	  */
