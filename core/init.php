@@ -15,7 +15,7 @@
  include_once "config/config.php";
  
  //Set PHP errors as requested.
- ini_set('display_errors', PHP_ERRORS);
+ ini_set("display_errors", PHP_ERRORS);
  
  //Include the API classes
  include_once "core/ErrorHandler.php";

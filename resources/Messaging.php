@@ -12,6 +12,8 @@
  * @package Twilio
  * @subpackage resources
  *
+ * @todo Short Code Interaction (non sending). The sending of short code messages will continue to work with this API.
+ *
  */
  class Messaging extends Communicator {
 	 
@@ -27,7 +29,7 @@
 	  * @var string
 	  * @access private
 	  */
-	 private $resource = '/2010-04-01/Accounts/API_ACCOUNT_SID/Messages';
+	 private $api_resource;
 	 
 	 /**
 	  * From
@@ -133,6 +135,55 @@
 	  * @access private
 	  */
 	 private $ApplicationSid;
+	 
+	 
+	 /**
+	  * prepareMessage function.
+	  *
+	  * 1 - Set the value of all of the required variables in preparation for sending the message.
+	  * 2 - Prepare the message request 
+	  * 3 - Return the request for use in the Communicator class
+	  * 
+	  * @access public
+	  * @param mixed $From (default: null)
+	  * @param mixed $To (default: null)
+	  * @param mixed $Body (default: null)
+	  * @param mixed $MediaUrl (default: null) - comma delimtedf URL's for MMS images.
+	  * @param mixed $StatusCallback (default: null)
+	  * @param mixed $ApplicationSid (default: null)
+	  * @param mixed $Type (default: null)
+	  * @return array( [0] => The prepared urlencoded message, [1] => The url from the API to send the request to );
+	  */
+	 public function prepareMessage($From=null,$To=null,$Body=null,$MediaUrl=null,$StatusCallback=null,$ApplicationSid=null,$Type=null) {
+	 	
+	 	//Set the relevant parameter values, if passed in with the constructor.
+	 	$this->From 				= $From;
+	 	$this->To					= $To;
+	 	$this->Body					= $Body;
+	 	$this->MediaUrl 			= $MediaUrl;
+	 	$this->StatusCallback		= $StatusCallback;
+	 	$this->ApplicationSid		= $ApplicationSid;
+	 	$this->api_resource 		= "/Accounts/" . API_ACCOUNT_SID . "/Messages";
+	 	
+	 	//Form the REST Request URI
+	 	$requestURI = $this->api_protocol . $this->api_location . $this->api_resource;
+	 	
+	 	//Store each parameter in an array for REST preparation
+	 	$requestParameters = array(
+	 	
+	 							"From" 			=> $this->From,
+								"To"				=> $this->To,
+								"Body"				=> $this->Body,
+								"MediaUrl"			=> $this->MediaUrl,
+								"StatusCallback"	=> $this->StatusCallback,
+								"ApplicationSid"	=> $this->ApplicationSid,
+							);
+		
+		//Append $tempMessage to our REST Request URI and return it out of the function
+		return array( $requestParameters, $requestURI );
+	 
+	 }
+
 	 
 	 /**
 	  * getFrom function.

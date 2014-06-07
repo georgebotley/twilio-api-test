@@ -18,6 +18,9 @@
  //Otherwise, we are dealing with a standard request to communicate with the API.
  else {}
  
+ $ourMessage = "Hello George, how are you doing today? This is a test Twilio API message. :-) :D";
+ $preparedMessage = $Messaging->prepareMessage("+441383630054", "+447757765484", $ourMessage, null);
+ $response = $Communicator->sendCommunication($preparedMessage[0], $preparedMessage[1]);
  
  
 ?>
