@@ -13,7 +13,7 @@
  * @subpackage resources
  *
  */
- class Messaging {
+ class Messaging extends Communicator {
 	 
 	 /**
 	  * resource
@@ -134,6 +134,29 @@
 	  */
 	 private $ApplicationSid;
 	 
+	 /**
+	  * getFrom function.
+	  * 
+	  * Return the value of the From variable. 
+	  *
+	  * @access public
+	  * @return String
+	  */
+	 public function getFrom() { 
+	 	return $this->From; 
+	 }
+	 
+	 /**
+	  * setTo function.
+	  * 
+	  * Set the value of the To variable.
+	  *
+	  * @access public
+	  * @return String
+	  */
+	 public function setFrom($NewFrom) { 
+	 	$this->From = $NewFrom;
+	 }
 	 
 	 /**
 	  * getTo function.
@@ -141,7 +164,7 @@
 	  * Return the value of the To variable. 
 	  *
 	  * @access public
-	  * @return void
+	  * @return String
 	  */
 	 public function getTo() { 
 	 	return $this->To; 
@@ -153,10 +176,106 @@
 	  * Set the value of the To variable.
 	  *
 	  * @access public
-	  * @return void
+	  * @return String
 	  */
 	 public function setTo($NewTo) { 
 	 	$this->To = $NewTo;
+	 }
+
+	 /**
+	  * getBody function.
+	  * 
+	  * Return the value of the Body variable. 
+	  *
+	  * @access public
+	  * @return String
+	  */
+	 public function getBody() { 
+	 	return $this->Body; 
+	 }
+	 
+	 /**
+	  * setBody function.
+	  * 
+	  * Set the value of the Body variable.
+	  *
+	  * @access public
+	  * @return String
+	  */
+	 public function setBody($NewBody) { 
+	 	$this->Body = $NewBody;
+	 }
+	 
+	 /**
+	  * getMediaUrl function.
+	  * 
+	  * Return the value of the MediaUrl variable. 
+	  *
+	  * @access public
+	  * @return String
+	  */
+	 public function getMediaUrl() { 
+	 	return $this->MediaUrl; 
+	 }
+	 
+	 /**
+	  * setMediaUrl function.
+	  * 
+	  * Set the value of the MediaUrl variable.
+	  *
+	  * @access public
+	  * @return String
+	  */
+	 public function setMediaUrl($NewMediaUrl) { 
+	 	$this->MediaUrl = $NewMediaUrl;
+	 }
+	 
+	 /**
+	  * getStatusCallback function.
+	  * 
+	  * Return the value of the StatusCallback variable. 
+	  *
+	  * @access public
+	  * @return String
+	  */
+	 public function getStatusCallback() { 
+	 	return $this->StatusCallback; 
+	 }
+	 
+	 /**
+	  * setStatusCallback function.
+	  * 
+	  * Set the value of the StatusCallback variable.
+	  *
+	  * @access public
+	  * @return String
+	  */
+	 public function setStatusCallback($NewStatusCallback) { 
+	 	$this->StatusCallback = $NewStatusCallback;
+	 }
+	 
+	 /**
+	  * getApplicationSid function.
+	  * 
+	  * Return the value of the ApplicationSid variable. 
+	  *
+	  * @access public
+	  * @return String
+	  */
+	 public function getApplicationSid() { 
+	 	return $this->ApplicationSid; 
+	 }
+	 
+	 /**
+	  * setApplicationSid function.
+	  * 
+	  * Set the value of the ApplicationSid variable.
+	  *
+	  * @access public
+	  * @return String
+	  */
+	 public function setApplicationSid($NewApplicationSid) { 
+	 	$this->ApplicationSid = $NewApplicationSid;
 	 }
 	 	 
  }
