@@ -239,7 +239,7 @@
 							
 						<?php ob_flush();
 						
-						//Return the a SimpleXML object.
+						//Return the Response.
 						return $response;
 						
 					 } 
