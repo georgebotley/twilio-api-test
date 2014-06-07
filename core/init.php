@@ -17,15 +17,14 @@
  //Set PHP errors as requested.
  ini_set('display_errors', PHP_ERRORS);
  
- //Check for cURL, if it does not exist, throw an error.
- ( !function_exists('curl_version') ? trigger_error("PHP cURL extension not found", E_USER_ERROR) : '' );
- 
  //Include the API classes
+ include_once "core/ErrorHandler.php";
  include_once "core/Communicator.php";
  include_once "resources/Messaging.php";
  
  //Initialise instances of API classes
- $Communicator = new Communicator(API_REMOTE_LOCATION, API_ACCOUNT_SID, API_ACCOUNT_TOKEN, API_PROTOCOL);
+ $ErrorHandler = new ErrorHandler();
+ $Communicator = new Communicator();
  $Messaging = new Messaging();
  
  //Pass control to the required controller
