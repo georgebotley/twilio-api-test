@@ -1,6 +1,6 @@
 <?php
 /**
- * controller.php - Twilio
+ * Controller.php - Twilio
  * 
  * Control the operation of the API calls and callbacks.
  *
