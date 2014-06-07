@@ -28,8 +28,9 @@
 
 /*
  * THE RETREIVE MESSAGES
+ *
+ $preparedAPICall = $Messaging->getMessages("+441383630054", "+447757765484");
+ $response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "GET", false, false);
 */
- $preparedAPICall = $Messaging->getMessages();
- $response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "GET", true, false);
  
 ?>
