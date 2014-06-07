@@ -20,11 +20,13 @@
  //Include the API classes
  include_once "core/ErrorHandler.php";
  include_once "core/Communicator.php";
+ include_once "resources/Accounts.php";
  include_once "resources/Messaging.php";
  
  //Initialise instances of API classes
  $ErrorHandler = new ErrorHandler();
  $Communicator = new Communicator();
+ $Accounts = new Accounts();
  $Messaging = new Messaging();
  
  //Pass control to the required controller
