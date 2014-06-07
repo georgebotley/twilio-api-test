@@ -136,6 +136,17 @@
 	  */
 	 private $ApplicationSid;
 	 
+	 /**
+	  * Date
+	  * 
+	  * Only show messages sent on this date (in GMT format), given as YYYY-MM-DD. Example: DateSent=2009-07-06. 
+	  * You can also specify inequality, such as DateSent<=YYYY-MM-DD for messages that were sent on or before midnight
+	  * on a date, and DateSent>=YYYY-MM-DD for messages sent on or after midnight on a date.
+	  *
+	  * @var string
+	  * @access private
+	  */
+	 private $Date;
 	 
 	 /**
 	  * prepareMessage function.
@@ -160,7 +171,7 @@
 	 	$this->From 				= $From;
 	 	$this->To					= $To;
 	 	$this->Body					= $Body;
-	 	$this->MediaUrl 			= $MediaUrl;
+	 	$this->MediaUrl				= $MediaUrl;
 	 	$this->StatusCallback		= $StatusCallback;
 	 	$this->ApplicationSid		= $ApplicationSid;
 	 	$this->api_resource 		= "/Accounts/" . API_ACCOUNT_SID . "/Messages";
@@ -170,18 +181,54 @@
 	 	
 	 	//Store each parameter in an array for REST preparation
 	 	$requestParameters = array(
-	 	
-	 							"From" 			=> $this->From,
+	 							"From" 				=> $this->From,
 								"To"				=> $this->To,
 								"Body"				=> $this->Body,
-								"MediaUrl"			=> $this->MediaUrl,
 								"StatusCallback"	=> $this->StatusCallback,
 								"ApplicationSid"	=> $this->ApplicationSid,
 							);
+							
+		//Assign MediaUrl to the $requestParameters seperately, BUT ONLY WHEN it exists. This prevents the API falling over!
+		if( $MediaUrl!==null ) { $requestParameters["MediaUrl"] = $this->MediaUrl; }
 		
-		//Append $tempMessage to our REST Request URI and return it out of the function
+		//Append $requestParameters to our REST Request URI and return it out of the function
 		return array( $requestParameters, $requestURI );
 	 
+	 }
+	 
+	 	 
+	 /**
+	  * getMessages function.
+	  *
+	  * Retreive a list of messages sent/received from the account. Can be narrowed down with critera.
+	  * 
+	  * @access public
+	  * @param mixed $From (default: null) - Only show messages to this phone number.
+	  * @param mixed $To (default: null) - Only show messages from this phone number.
+	  * @param mixed $Date (default: null) - Only show messages sent on this date (in GMT format), given as YYYY-MM-DD
+	  * @return void
+	  */
+	 public function getMessages($From=null,$To=null,$Date=null) {
+	 
+	 	//Set the relevant parameter values, if passed in with the constructor.	 
+	 	$this->From				= $From;
+	 	$this->To				= $To;
+	 	$this->Date				= $Date;
+	 	$this->api_resource 	= "/Accounts/" . API_ACCOUNT_SID . "/Messages";
+	 	
+	 	//Form the REST Request URI
+	 	$requestURI = $this->api_protocol . $this->api_location . $this->api_resource;
+		 
+	 	//Store each parameter in an array for REST preparation
+	 	$requestParameters = array(
+	 							"From" 				=> $this->From,
+								"To"				=> $this->To,
+								"Date"				=> $this->Date,
+								);
+															
+		//Append $requestParameters to our REST Request URI and return it out of the function
+		return array( $requestParameters, $requestURI );
+		 
 	 }
 
 	 

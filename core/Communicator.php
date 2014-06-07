@@ -58,28 +58,46 @@
 	  * @param mixed $RequestURI - The request URI
 	  * @param mixed $RequestMethod - The method to use, defaults to POST if not defined.
 	  * @param mixed $debug - Should we verbose output debug the communication? Defaults to false if not defined.
+	  * @param mixed $dummy - Dummy mode. Prevents API from authenticating. Useful for checking outbound request without response. Defaults to false if not defined.
 	  * @return void
 	  *
 	  * @todo Incorporate GET and any other required Request Method types
 	  */
-	 public function sendCommunication($preparedMessage, $RequestURI, $RequestMethod="POST", $debug=true) {
+	 public function sendCommunication($preparedMessage, $RequestURI, $RequestMethod="POST", $debug=false, $dummy=false) {
 		 
 		 //Curl Options
 		 $curl_options = array();
 		 $curl_options[CURLOPT_HEADER] 					= true; //Ask to receive HTTP headers
-		 $curl_options[CURLOPT_RETURNTRANSFER] 			= true; //Request the response back to the application
-		 $curl_options[CURLOPT_URL] 					= $RequestURI; //Set the URL to send this request to.
+		 $curl_options[CURLOPT_RETURNTRANSFER] 			= true; //Request the response back to the application (set to false to output XML in source view)
 		 $curl_options[CURLOPT_TIMEOUT] 				= 60; //Communication timeout time.
 		 $curl_options[CURLINFO_HEADER_OUT] 			= true; //Communication timeout time.
-		 $curl_options[CURLOPT_USERPWD] 				= API_ACCOUNT_SID . ":" . API_ACCOUNT_TOKEN; //Authentication
+		 $curl_options[CURLOPT_USERPWD] 				= ( ($dummy) ? "" : API_ACCOUNT_SID . ":" . API_ACCOUNT_TOKEN ); //Authentication
  		 
  		 //Establish the communication method type and set any other applicable options
  		 switch($RequestMethod) {
 	 		 
 	 		 case "POST":
 	 		 
+	 		 	$curl_options[CURLOPT_URL] 				= $RequestURI; //Set the URL to send this request to.
 	 		 	$curl_options[CURLOPT_POST] 			= true; //Inform curl to use POST headers.
 	 		 	$curl_options[CURLOPT_POSTFIELDS] 		= $preparedMessage; //The actual data of the communication.
+	 		 
+	 		 break;
+	 		 
+	 		 case "GET":
+	 		 
+	 		 	//Prepare the GET request parameters. It can't be an array in GET requests. It follows the standard ?a=1&b=2 style.
+	 		 	$i=0;
+	 		 	foreach($preparedMessage as $parameter => $value) {
+		 		 	
+		 		 	if($i==0) { $get_request = "?" . $parameter . "=" . $value; }
+		 		 	else { $get_request .= "&" . $parameter . "=" . $value; }
+		 		 	$i++;
+		 		 	
+	 		 	}
+	 		 
+	 		 	$curl_options[CURLOPT_HTTPGET] 	= true; //Infom curl to use GET headers.
+	 		 	$curl_options[CURLOPT_URL] 		= $RequestURI . "/" . $get_request; //Set the URL to send this request to (with GET style ?a=1&b=2).
 	 		 
 	 		 break;
 	 		 
@@ -220,7 +238,10 @@
 							</table>
 							
 						<?php ob_flush();
-						 
+						
+						//Return the a SimpleXML object.
+						return $response;
+						
 					 } 
 					 
 				 }
