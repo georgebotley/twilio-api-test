@@ -7,7 +7,7 @@
  * @author George Botley <george@torindul.co.uk>
  * @version 4301410344
  * @package Twilio
- * @subpackage config
+ * @subpackage core
  *
  */
  
