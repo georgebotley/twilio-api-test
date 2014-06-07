@@ -1,6 +1,6 @@
 <?php
 /**
- * messaging.php - Twilio
+ * Messaging.php - Twilio
  * 
  * Interact with Twilio API SMS and MMS facility. Comments as per the API Docs.
  *
@@ -10,10 +10,10 @@
  * @version 4301410344
  * @copyright Copyright © 2014, Torindul Business Solutions
  * @package Twilio
- * @subpackage messaging
+ * @subpackage resources
  *
  */
- class messaging {
+ class Messaging {
 	 
 	 /**
 	  * resource
