@@ -12,55 +12,15 @@
  *
  */
  
- //If we are dealing with a POST communication this is a call back.
- if($_SERVER['REQUEST_METHOD'] === 'POST') {}
  
- //Otherwise, we are dealing with a standard request to communicate with the API.
- else {}
+ //$Messages->send_message( array('From' => '+44 1383 630054') );
+ //$Messages->get_messages( array('To' => '+447969430926') );
  
-/*
- * SMS SEND
-*/
-//$ourMessage = "Hello George, how are you doing today? This is a test Twilio API message. :-) :D";
-//$preparedAPICall = $Messaging->prepareMessage("+441383630054", "+447757765484", $ourMessage);
-//$response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "POST", DEBUG_MODE, DUMMY_MODE);
-
-
-/*
- * SMS RETREIVE MESSAGES
-*/
-//$preparedAPICall = $Messaging->getMessages();
-//s$response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "GET", DEBUG_MODE, DUMMY_MODE);
-
-
-/*
- * MASTER ACCOUNT RETREIVE
-*/
-//$preparedAPICall = $Accounts->getAccount(API_ACCOUNT_SID);
-//$response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "GET", DEBUG_MODE, DUMMY_MODE);
-
-/*
- * MASTER ACCOUNT UPDATE
-*/
-//$preparedAPICall = $Accounts->updateAccount(API_ACCOUNT_SID, 'GeorgeBotley');
-//$response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "POST", DEBUG_MODE, DUMMY_MODE);
-
-/*
- * ACCOUNT STATUS UPDATE
-*/
-//$preparedAPICall = $Accounts->updateAccountStatus('', 'suspended');
-//$response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "POST", DEBUG_MODE, DUMMY_MODE);
-
-/*
- * SEARCH ACCOUNTS
-*/
-$preparedAPICall = $Accounts->searchAccounts();
-$response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "GET", DEBUG_MODE, DUMMY_MODE);
-
-/*
- * CREATE SUB ACCOUNT
-*/
-//$preparedAPICall = $Accounts->createSubAccount();
-//$response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "POST", DEBUG_MODE, DUMMY_MODE);
+ //$Accounts->get_account();
+ //$Accounts->search_accounts();
+ 
+ 
+ 
+ 
  
 ?>
