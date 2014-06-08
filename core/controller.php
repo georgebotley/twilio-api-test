@@ -23,21 +23,44 @@
 */
 //$ourMessage = "Hello George, how are you doing today? This is a test Twilio API message. :-) :D";
 //$preparedAPICall = $Messaging->prepareMessage("+441383630054", "+447757765484", $ourMessage);
-//$response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "POST", DEBUG_MODE, false);
+//$response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "POST", DEBUG_MODE, DUMMY_MODE);
 
 
 /*
  * SMS RETREIVE MESSAGES
 */
-$preparedAPICall = $Messaging->getMessages();
-$response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "GET", DEBUG_MODE, false);
+//$preparedAPICall = $Messaging->getMessages();
+//s$response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "GET", DEBUG_MODE, DUMMY_MODE);
 
 
 /*
- * ACCOUNT RETREIVE
+ * MASTER ACCOUNT RETREIVE
 */
-//$preparedAPICall = $Accounts->getAccount("AC718634fa7cc8856c75633f50526c0141");
-//$response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "GET", DEBUG_MODE, false);
+//$preparedAPICall = $Accounts->getAccount(API_ACCOUNT_SID);
+//$response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "GET", DEBUG_MODE, DUMMY_MODE);
 
+/*
+ * MASTER ACCOUNT UPDATE
+*/
+//$preparedAPICall = $Accounts->updateAccount(API_ACCOUNT_SID, 'GeorgeBotley');
+//$response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "POST", DEBUG_MODE, DUMMY_MODE);
+
+/*
+ * ACCOUNT STATUS UPDATE
+*/
+//$preparedAPICall = $Accounts->updateAccountStatus('', 'suspended');
+//$response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "POST", DEBUG_MODE, DUMMY_MODE);
+
+/*
+ * SEARCH ACCOUNTS
+*/
+$preparedAPICall = $Accounts->searchAccounts();
+$response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "GET", DEBUG_MODE, DUMMY_MODE);
+
+/*
+ * CREATE SUB ACCOUNT
+*/
+//$preparedAPICall = $Accounts->createSubAccount();
+//$response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "POST", DEBUG_MODE, DUMMY_MODE);
  
 ?>

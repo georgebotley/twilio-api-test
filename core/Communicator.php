@@ -80,6 +80,15 @@
 	 		 
 	 		 	$curl_options[CURLOPT_URL] 				= $RequestURI; //Set the URL to send this request to.
 	 		 	$curl_options[CURLOPT_POST] 			= true; //Inform curl to use POST headers.
+	 		 	
+	 		 	//Prepare the POST request parameters. Remove empties.
+	 		 	foreach($preparedMessage as $parameter => $value) {
+		 		 	
+		 		 	//Remove/Unset an empty, if not empty fall through.
+		 		 	if(empty($value) || $value==null || $value=='') { unset($preparedMessage[$parameter]); }
+		 		 	
+	 		 	}
+	 		 	
 	 		 	$curl_options[CURLOPT_POSTFIELDS] 		= $preparedMessage; //The actual data of the communication.
 	 		 
 	 		 break;
@@ -137,7 +146,7 @@
 					 $status = curl_getinfo($session, CURLINFO_HTTP_CODE);
 					 
 					 //Check the status code. If the status is a failure then throwError and stop. Otherwise continue.
-					 $this->HTTPStatus(405); 
+					 $this->HTTPStatus($status); 
 					 
 					 //Explode the header in to it's own array.
 					 $header_lines = explode("\r\n", $head);
