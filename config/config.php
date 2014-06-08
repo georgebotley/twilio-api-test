@@ -22,7 +22,7 @@
  * - API_ACCOUNT_TOKEN 			= The account token. Can be found in the Twilio dashboard.
  * - PHP_ERRORS 				= Shall we show PHP errors? 1 = yes, 0 = no.
  * - DEBUG_MODE					= Shall we show the request and output for a given API request? 1 = yes, 0 = no.
- * - DUMMY_MODE					= No requests are fullfilled (fails authentication) but when combined with DEBUG_MODE you can review your original request params.
+ * - DUMMY_MODE					= No requests are fullfilled (fails authentication) but when combined with DEBUG_MODE you can review your original request param.
  */
  define("API_LOCAL_LOCATION", "www.torindul.co.uk/twilio");
  define("API_REMOTE_LOCATION", "api.twilio.com/2010-04-01"); 
