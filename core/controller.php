@@ -19,18 +19,25 @@
  else {}
  
 /*
- * THE SEND COMMENT
- *
- $ourMessage = "Hello George, how are you doing today? This is a test Twilio API message. :-) :D";
- $preparedAPICall = $Messaging->prepareMessage("+441383630054", "+447757765484", $ourMessage);
- $response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "POST", false, false);
+ * SMS SEND
 */
+//$ourMessage = "Hello George, how are you doing today? This is a test Twilio API message. :-) :D";
+//$preparedAPICall = $Messaging->prepareMessage("+441383630054", "+447757765484", $ourMessage);
+//$response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "POST", DEBUG_MODE, false);
+
 
 /*
- * THE RETREIVE MESSAGES
- *
- $preparedAPICall = $Messaging->getMessages("+441383630054", "+447757765484");
- $response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "GET", false, false);
+ * SMS RETREIVE MESSAGES
 */
+$preparedAPICall = $Messaging->getMessages();
+$response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "GET", DEBUG_MODE, false);
+
+
+/*
+ * ACCOUNT RETREIVE
+*/
+//$preparedAPICall = $Accounts->getAccount("AC718634fa7cc8856c75633f50526c0141");
+//$response = $Communicator->sendCommunication($preparedAPICall[0], $preparedAPICall[1], "GET", DEBUG_MODE, false);
+
  
 ?>
