@@ -2,7 +2,7 @@
 /**
  * Communicator.php - Twilio
  * 
- * Handles HTTP communication
+ * Client to handles HTTP communication
  *
  * @author George Botley <george@torindul.co.uk>
  * @version 4301410344
@@ -35,10 +35,10 @@
 	 function __construct() {
 	 
 		 //Check for OpenSSL, if it does not exist, throw an error.
-		 ( !in_array('openssl', get_loaded_extensions()) ? $this->throwError("Open SSL extension not found") : "" );
+		 ( !in_array('openssl', get_loaded_extensions()) ? $this->throwError("Open SSL extension not found", __FILE__, __LINE__) : "" );
 	 
 		 //Check for cURL, if it does not exist, throw an error.
-		 ( !in_array('curl', get_loaded_extensions()) ? $this->throwError("PHP cURL extension not found") : "" );
+		 ( !in_array('curl', get_loaded_extensions()) ? $this->throwError("PHP cURL extension not found", __FILE__, __LINE__) : "" );
 		 
 		 //Set the class variables.
 		 $this->api_location = API_REMOTE_LOCATION;
@@ -49,21 +49,25 @@
 	 }
 	 
 	 /**
-	  * sendCommunication function.
+	  * send_request function.
 	  *
-	  * Send the HTTP request and return a response.
+	  * Send the HTTP request and return an XML response.
 	  * 
 	  * @access public
+	  *
+	  * @method $Communicator->send_request($preparedMessage, $RequestURI, 'POST', 1, 1);
+	  *
 	  * @param mixed $preparedMessage - The REST formatted, urlencoded request.
 	  * @param mixed $RequestURI - The request URI
 	  * @param mixed $RequestMethod - The method to use, defaults to POST if not defined.
 	  * @param mixed $debug - Should we verbose output debug the communication? Defaults to false if not defined.
 	  * @param mixed $dummy - Dummy mode. Prevents API from authenticating. Useful for checking outbound request without response. Defaults to false if not defined.
-	  * @return void
+	  *
+	  * @return XML
 	  *
 	  * @todo Incorporate GET and any other required Request Method types
 	  */
-	 public function sendCommunication($preparedMessage, $RequestURI, $RequestMethod="POST", $debug=false, $dummy=false) {
+	 public function send_request($preparedMessage, $RequestURI, $RequestMethod="POST", $debug=false, $dummy=false) {
 		 
 		 //Curl Options
 		 $curl_options = array();
@@ -119,7 +123,11 @@
 	 		 break;
 	 		 
 	 		 default:
-	 		 	$this->throwError("The requested communication type (" . $RequestMethod . ") has not been configured yet. It is on the to do list." );
+	 		 	$this->throwError(
+	 		 		"The requested communication type (" . $RequestMethod . ") has not been configured yet. It is on the to do list.",
+	 		 		__FILE__,
+	 		 		__LINE__
+	 		 	);
 	 		 break;
 	 		 
  		 }
@@ -146,7 +154,7 @@
 					 $status = curl_getinfo($session, CURLINFO_HTTP_CODE);
 					 
 					 //Check the status code. If the status is a failure then throwError and stop. Otherwise continue.
-					 $this->HTTPStatus($status); 
+					 $this->HTTPStatus($status, __FILE__, __LINE__); 
 					 
 					 //Explode the header in to it's own array.
 					 $header_lines = explode("\r\n", $head);
@@ -283,7 +291,7 @@
 
 				 //Otherwise, fail.
 				 else {
-					 $this->throwError("We could not get a response from the API.");
+					 $this->throwError("We could not get a response from the API.", __FILE__, __LINE__);
 				 }
 				 
 				 
@@ -291,14 +299,14 @@
 			 
 			 //Otherwise, we could not configure the curl session so fail.
 			 else { 
-			 	$this->throwError("The curl session could not be configured.");
+			 	$this->throwError("The curl session could not be configured.", __FILE__, __LINE__);
 			 }
 			 
 		 }
 		 
 		 //Otherwise, we could not open a curl session so fail.
 		 else {
-			 $this->throwError("A curl session could not be opened.");
+			 $this->throwError("A curl session could not be opened.", __FILE__, __LINE__);
 		 }
 		 
 	 }
