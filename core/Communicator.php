@@ -89,10 +89,18 @@
 	 		 	//Prepare the GET request parameters. It can't be an array in GET requests. It follows the standard ?a=1&b=2 style.
 	 		 	$i=0;
 	 		 	foreach($preparedMessage as $parameter => $value) {
-		 		 	
-		 		 	if($i==0) { $get_request = "?" . $parameter . "=" . $value; }
-		 		 	else { $get_request .= "&" . $parameter . "=" . $value; }
-		 		 	$i++;
+	 		 	
+	 		 		//If value is empty, don't include in the parameters
+	 		 		if(empty($value) || $value==null || $value=='') {}
+	 		 		
+	 		 		//Otherwise, continue...		 		 	
+	 		 		else {
+	 		 		
+			 		 	if($i==0) { $get_request = "?" . $parameter . "=" . $value; }
+			 		 	else { $get_request .= "&" . $parameter . "=" . $value; }
+			 		 	$i++;
+			 		 	
+		 		 	}
 		 		 	
 	 		 	}
 	 		 
@@ -127,6 +135,9 @@
 					 
 					 //Fetch the HTTP code, as integer.
 					 $status = curl_getinfo($session, CURLINFO_HTTP_CODE);
+					 
+					 //Check the status code. If the status is a failure then throwError and stop. Otherwise continue.
+					 $this->HTTPStatus(405); 
 					 
 					 //Explode the header in to it's own array.
 					 $header_lines = explode("\r\n", $head);
@@ -228,8 +239,23 @@
 							 	
 									<tr>
 										
-										<td width="40%"><strong>Body</strong></td>
-										<td><?php echo $body; ?></td>
+										<td width="10%"><strong>Body</strong></td>
+										<td width="90%">
+
+										
+												<?php
+												
+													$body_xml = new SimpleXMLElement($body);
+													$dom = new DOMDocument("1.0");
+													$dom->preserveWhiteSpace = true;
+													$dom->formatOutput = true;
+													$dom->loadXML( $body_xml->asXML() );
+													echo nl2br ( htmlentities( $dom->saveXML() ) ); 
+													
+												?>
+												
+
+										</td>
 										
 									</tr>
 							 	
@@ -239,7 +265,7 @@
 							
 						<?php ob_flush();
 						
-						//Return the Response.
+						//Before we return a response, check its status code.
 						return $response;
 						
 					 } 
