@@ -13,6 +13,7 @@
  * @subpackage resources
  *
  * @todo Short Code Interaction (non sending). The sending of short code messages will continue to work with this API.
+ * @todo StatusCallback development.
  *
  */
  class Messaging extends Communicator {
