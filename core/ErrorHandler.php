@@ -24,9 +24,9 @@
 	  * @param mixed $type - The type of message. Refer to documention at PHP.net. If blank defaults to E_USER_ERROR.
 	  * @return void
 	  */
-	 public function throwError($message, $type=E_USER_ERROR) {
+	 public function throwError($message, $file, $line) {
 		 
-		 trigger_error($message, $type);
+		 exit($message . " <br /><br />Error found in file <strong>" . $file . "</strong> on line <strong>" . $line . "</strong>");
 		 
 	 }	 
 	 
@@ -39,10 +39,12 @@
 	  * (https://www.twilio.com/docs/api/rest/request)
 	  * 
 	  * @access public
-	  * @param mixed $status
+	  * @param mixed $status	- The HTTP status
+	  * @param mixed $file 		- The file where the error occured
+	  * @param mixed $line 		- The line number of the file where the error occured
 	  * @return void
 	  */
-	 public function HTTPStatus($status) {
+	 public function HTTPStatus($status, $file, $line) {
 		 
 		 switch($status) {
 			 
@@ -73,37 +75,43 @@
 			 //401 - UNAUTHORIZED
 			 //The supplied credentials, if any, are not sufficient to access the resource.
 			 case 401:
-			 	$this->throwError("HTTP Status Code 401 - Uh Oh! It looks like the credentials you're using are invalid. Please correct them in config/config.php");
+			 	$this->throwError("HTTP Status Code 401 - Uh Oh! It looks like the credentials you're using are invalid. Please correct them in config/config.php", 
+				 		$file,
+				 		$line
+			 		);
 			 break;
 			 
 			 //404 - NOT FOUND
 			 //Resource not found.
 			 case 404:
-			 	$this->throwError("HTTP Status Code 404 - The resource you required could not be found. Contact your system administrator.");
+			 	$this->throwError(
+				 		"HTTP Status Code 404 - The resource could not be found. Check the Sid you are using or contact your system administrator.", 
+				 		$file,
+				 		$line
+			 		);
 			 break;
 			 
 			 //405 - NOT ALLOWED
 			 //You can't POST or PUT to the resource.
 			 case 405:
-			 	$this->throwError("HTTP Status Code 405 - You can't POST or PUT to the resource requested.");
+			 	$this->throwError("HTTP Status Code 405 - You can't POST or PUT to the resource requested.", $file, $line);
 			 break;			 
 			 
 			 //429 - TOO MANY REQUESTS
 			 //Your application is sending too many simultaneous requests.
 			 case 429:
-			 	$this->throwError("HTTP Status Code 429 - Too many simultaneous requests from you. Allow me to catch up. Please try again shortly.");
-			 break;
+			 	$this->throwError("HTTP Status Code 429 - Too many simultaneous requests from you. Allow me to catch up. Please try again shortly.", $file, $line);			 break;
 			 
 			 //500 - SERVER ERROR
 			 //We couldn't return the representation due to an internal server error.
 			 case 500:
-			 	$this->throwError("HTTP Status Code 500 - An internal server error has occured. Please try again shortly.");
+			 	$this->throwError("HTTP Status Code 500 - An internal server error has occured. Please try again shortly.", $file, $line);
 			 break;
 			 
 			 //503 - SERVICE UNAVAILABLE
 			 //We are temporarily unable to return the representation. Please wait for a bit and try again.
 			 case 503:
-			 	$this->throwError("HTTP Status Code 503 - Resource temporarily unavailable. Please try again shortly.");
+			 	$this->throwError("HTTP Status Code 503 - Resource temporarily unavailable. Please try again shortly.", $file, $line);
 			 break;			 			 
 			 
 			 
