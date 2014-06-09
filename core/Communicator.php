@@ -124,7 +124,8 @@
 	 		 
 	 		 case "DELETE":
 	 		 
-	 		 	$curl_options[CURLOPT_HTTPGET] = "DELETE";
+	 		 	$curl_options[CURLOPT_URL] 		= $RequestURI; //Set the URL to send this request to.
+	 		 	$curl_options[CURLOPT_CUSTOMREQUEST] = "DELETE";
 	 		 
 	 		 break;
 	 		 
@@ -268,12 +269,22 @@
 										
 												<?php
 												
-													$body_xml = new SimpleXMLElement($body);
-													$dom = new DOMDocument("1.0");
-													$dom->preserveWhiteSpace = true;
-													$dom->formatOutput = true;
-													$dom->loadXML( $body_xml->asXML() );
-													echo nl2br ( htmlentities( $dom->saveXML() ) ); 
+													if($body) {
+													
+														$body_xml = new SimpleXMLElement($body);
+														$dom = new DOMDocument("1.0");
+														$dom->preserveWhiteSpace = true;
+														$dom->formatOutput = true;
+														$dom->loadXML( $body_xml->asXML() );
+														echo nl2br ( htmlentities( $dom->saveXML() ) ); 
+														
+													}
+													
+													else {
+														
+														echo "This request type outputs no body.";
+														
+													}
 													
 												?>
 												
@@ -297,7 +308,7 @@
 
 				 //Otherwise, fail.
 				 else {
-					 $this->throwError("We could not get a response from the API.", __FILE__, __LINE__);
+					 $this->throwError("<strong>cURL Error:</strong> " . curl_error ($session), __FILE__, __LINE__);
 				 }
 				 
 				 
@@ -305,14 +316,14 @@
 			 
 			 //Otherwise, we could not configure the curl session so fail.
 			 else { 
-			 	$this->throwError("The curl session could not be configured.", __FILE__, __LINE__);
+			 	$this->throwError("<strong>cURL Configuration Error:</strong> " . curl_error ($session), __FILE__, __LINE__);
 			 }
 			 
 		 }
 		 
 		 //Otherwise, we could not open a curl session so fail.
 		 else {
-			 $this->throwError("A curl session could not be opened.", __FILE__, __LINE__);
+			 $this->throwError("<strong>cURL Session Error:</strong> " . curl_error ($session), __FILE__, __LINE__);
 		 }
 		 
 	 }
