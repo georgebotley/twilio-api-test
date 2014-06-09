@@ -23,6 +23,7 @@
  include_once "resources/Accounts.php";
  include_once "resources/Messages.php";
  include_once "resources/Numbers.php";
+ include_once "resources/Calls.php";
  
  //Initialise instances of API classes
  $ErrorHandler = new ErrorHandler();
@@ -30,6 +31,7 @@
  $Accounts = new Accounts();
  $Messages = new Messages();
  $Numbers = new Numbers();
+ $Calls = new Calls();
  
  //Pass control to the required controller
  include_once "core/Controller.php";
