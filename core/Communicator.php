@@ -64,8 +64,6 @@
 	  * @param mixed $dummy - Dummy mode. Prevents API from authenticating. Useful for checking outbound request without response. Defaults to false if not defined.
 	  *
 	  * @return XML
-	  *
-	  * @todo Incorporate GET and any other required Request Method types
 	  */
 	 public function send_request($preparedMessage, $RequestURI, $RequestMethod="POST", $debug=false, $dummy=false) {
 		 
