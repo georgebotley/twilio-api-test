@@ -57,7 +57,7 @@
 	  *
 	  * @return XML response from API.
 	  */
-	 public function get_messages( $Params = array(), $Sid=API_ACCOUNT_SID  ) {
+	 public function get_messages( $Params = array(), $Sid=API_ACCOUNT_SID ) {
 	 
 	 	//Resource URI
 	 	$resource = "/Accounts/" . ( ($Sid==null) ? API_ACCOUNT_SID : $Sid ) . "/Messages";

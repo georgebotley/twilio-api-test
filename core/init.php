@@ -22,12 +22,14 @@
  include_once "core/Communicator.php";
  include_once "resources/Accounts.php";
  include_once "resources/Messages.php";
+ include_once "resources/Numbers.php";
  
  //Initialise instances of API classes
  $ErrorHandler = new ErrorHandler();
  $Communicator = new Communicator();
  $Accounts = new Accounts();
  $Messages = new Messages();
+ $Numbers = new Numbers();
  
  //Pass control to the required controller
  include_once "core/Controller.php";

@@ -19,6 +19,11 @@
  //$Accounts->get_account();
  //$Accounts->search_accounts();
  
+ $Numbers->list_numbers();
+ //$Numbers->search_numbers( array('SmsEnabled' => 'True'), 'GB', 'Local' );
+ //$Numbers->list_outgoingcallerid();
+ //$Numbers->create_outgoingcallerid( '+447757765484' );
+ 
  
  
  

@@ -118,7 +118,13 @@
 	 		 	}
 	 		 
 	 		 	$curl_options[CURLOPT_HTTPGET] 	= true; //Infom curl to use GET headers.
-	 		 	$curl_options[CURLOPT_URL] 		= $RequestURI . "/" . $get_request; //Set the URL to send this request to (with GET style ?a=1&b=2).
+	 		 	$curl_options[CURLOPT_URL] 		= $RequestURI . $get_request; //Set the URL to send this request to (with GET style ?a=1&b=2).
+	 		 
+	 		 break;
+	 		 
+	 		 case "DELETE":
+	 		 
+	 		 	$curl_options[CURLOPT_HTTPGET] = "DELETE";
 	 		 
 	 		 break;
 	 		 
@@ -154,7 +160,7 @@
 					 $status = curl_getinfo($session, CURLINFO_HTTP_CODE);
 					 
 					 //Check the status code. If the status is a failure then throwError and stop. Otherwise continue.
-					 $this->HTTPStatus($status, __FILE__, __LINE__); 
+					 //$this->HTTPStatus($status, __FILE__, __LINE__); 
 					 
 					 //Explode the header in to it's own array.
 					 $header_lines = explode("\r\n", $head);
@@ -197,7 +203,7 @@
 									
 									<tr>
 										
-										<td width="40%"><strong>Original POST</strong></td>
+										<td width="40%"><strong>Original Params</strong></td>
 										<td><?php echo print_r($preparedMessage); ?></td>
 									
 									</tr>

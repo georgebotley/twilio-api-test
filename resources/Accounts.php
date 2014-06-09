@@ -116,7 +116,7 @@
 		//Form the REST Request URI
 		$requestURI = $this->api_protocol . $this->api_location . $resource;	
 	 	
-		//Append $requestParameters to our REST Request URI and return it out of the function
+		//Send the request and return the result as XML
 		return parent::send_request( $Params, $requestURI, "GET", DEBUG_MODE, DUMMY_MODE );
 		 
 	 }
@@ -143,7 +143,7 @@
 		//Store each parameter in an array for REST preparation
 	 	$Params = array("FriendlyName" 	=> $FriendlyName);
 	 	
-		//Append $requestParameters to our REST Request URI and return it out of the function
+		//Send the request and return the result as XML
 		return parent::send_request( $Params, $requestURI, "POST", DEBUG_MODE, DUMMY_MODE );
 		 
 	 }
