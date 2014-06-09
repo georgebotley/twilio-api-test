@@ -19,10 +19,13 @@
  //$Accounts->get_account();
  //$Accounts->search_accounts();
  
- $Numbers->list_numbers();
+ //$Numbers->list_numbers();
  //$Numbers->search_numbers( array('SmsEnabled' => 'True'), 'GB', 'Local' );
  //$Numbers->list_outgoingcallerid();
  //$Numbers->create_outgoingcallerid( '+447757765484' );
+ //$Numbers->delete_outgoingcallerid( 'PNd1d357538b75bd810b6292f1c537efe9' );
+ //$Numbers->view_outgoingcallerid( 'PNd1d357538b75bd810b6292f1c537efe9' );
+ //$Numbers->edit_outgoingcallerid( array('FriendlyName' => 'George Mobile'), 'PNd1d357538b75bd810b6292f1c537efe9' );
  
  
  
