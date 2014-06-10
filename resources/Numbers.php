@@ -116,7 +116,7 @@
 	 public function get_number_details( $PhoneNumberSid, $Sid=API_ACCOUNT_SID ) {
 		 
 		//Establish the resource
-		$resource = '/Accounts/ ' . $Sid . '/IncomingPhoneNumbers/ ' . $PhoneNumberSid;
+		$resource = '/Accounts/' . $Sid . '/IncomingPhoneNumbers/' . $PhoneNumberSid;
 					 	
 		//Form the REST Request URI
 		$requestURI = $this->api_protocol . $this->api_location . $resource;	
@@ -144,7 +144,7 @@
 	 public function update_number_details( $Params = array(), $PhoneNumberSid, $Sid=API_ACCOUNT_SID ) {
 		 
 		//Establish the resource
-		$resource = '/Accounts/ ' . $Sid . '/IncomingPhoneNumbers/ ' . $PhoneNumberSid;
+		$resource = '/Accounts/' . $Sid . '/IncomingPhoneNumbers/' . $PhoneNumberSid;
 					 	
 		//Form the REST Request URI
 		$requestURI = $this->api_protocol . $this->api_location . $resource;	
@@ -171,7 +171,7 @@
 	 public function release_number( $PhoneNumberSid, $Sid=API_ACCOUNT_SID ) {
 		 
 		//Establish the resource
-		$resource = '/Accounts/ ' . $Sid . '/IncomingPhoneNumbers/ ' . $PhoneNumberSid;
+		$resource = '/Accounts/' . $Sid . '/IncomingPhoneNumbers/' . $PhoneNumberSid;
 					 	
 		//Form the REST Request URI
 		$requestURI = $this->api_protocol . $this->api_location . $resource;	
@@ -199,7 +199,7 @@
 	 public function account_transfer( $NewAccountSid, $PhoneNumberSid, $Sid=API_ACCOUNT_SID ) {
 		 
 		//Establish the resource
-		$resource = '/Accounts/ ' . $Sid . '/IncomingPhoneNumbers/ ' . $PhoneNumberSid;
+		$resource = '/Accounts/' . $Sid . '/IncomingPhoneNumbers/' . $PhoneNumberSid;
 					 	
 		//Form the REST Request URI
 		$requestURI = $this->api_protocol . $this->api_location . $resource;	
