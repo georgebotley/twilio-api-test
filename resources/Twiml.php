@@ -4,11 +4,10 @@
  * 
  * Create Twiml using this class.
  *
- * @author Neuman Vong neuman@twilio.com
- * @version 4301410344
+ * @author Neuman Vong of Twilio - neuman@twilio.com
  * @copyright Copyright © 2014, Torindul Business Solutions
  * @package Twilio
- * @subpackage Twiml
+ * @subpackage resources
  *
  */
 class Twiml extends ErrorHandler {

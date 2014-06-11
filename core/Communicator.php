@@ -5,7 +5,6 @@
  * Client to handles HTTP communication
  *
  * @author George Botley <george@torindul.co.uk>
- * @version 4301410344
  * @copyright Copyright © 2014, Torindul Business Solutions
  * @package Twilio
  * @subpackage core
@@ -187,6 +186,10 @@
 						 
 						 ob_start(); ?>
 						 
+						 	<html>
+						 	<head></head>
+						 	<body>
+						 
 						 	<h1>API Debug</h1>
 						 	
 						 	<table border="1" width="100%" cellpadding="5">
@@ -295,10 +298,13 @@
 							 	
 							</table>
 							
+							</body>
+							</html>
+							
 						<?php ob_flush();
 						
-						//Before we return a response, check its status code.
-						return $response;
+						//Return array with status, header and body.
+						return array( 'Status' => $status, 'Header' => $headers, 'Body' => new SimpleXMLElement($body) );
 						
 					 } 
 					 

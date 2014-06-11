@@ -5,11 +5,13 @@
  * Prepare the API by including all of the neccessary files and initialising the required classes.
  *
  * @author George Botley <george@torindul.co.uk>
- * @version 4301410344
  * @package Twilio
  * @subpackage core
  *
  */
+ 
+ //Set the include path to that of the Twilio (one folder above)
+ set_include_path( dirname(__DIR__) );
  
  //Include the API configuration
  include_once "config/config.php";
@@ -25,6 +27,7 @@
  include_once "resources/Messages.php";
  include_once "resources/Numbers.php";
  include_once "resources/Calls.php";
+ include_once "resources/Queues.php";
  
  //Initialise instances of API classes
  $ErrorHandler = new ErrorHandler();
@@ -33,6 +36,7 @@
  $Messages = new Messages();
  $Numbers = new Numbers();
  $Calls = new Calls();
+ $Queues = new Queues();
 
 
 ?>
