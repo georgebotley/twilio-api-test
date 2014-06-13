@@ -27,7 +27,7 @@
 	  *
 	  * @return XML response from API.
 	  */
-	 public function list_usage( $Params=array(), $Type='All', $Sid=API_ACCOUNT_SID ) {
+	 public function list_usage( $Type='All', $Params=array(), $Sid=API_ACCOUNT_SID ) {
 		 
 		//Establish the resource
 		$resource = '/Accounts/' . $Sid . '/Usage/Records';
