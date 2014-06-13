@@ -14,7 +14,7 @@
  //Include the API initialiser.
  include_once "core/init.php";
  
- //$Messages->send_message( array('From' => '+44 1383 630054', 'To' => '+447757765484', 'Body' => "Hello.") );
+ //$Messages->send_message( array('From' => '+44 1383 630054', 'To' => '+447757765484', 'Body' => "Hello James Gooder, How are you :-).") );
  //$Messages->get_messages( array('To' => '+447969430926') );
  
  //$Accounts->get_account();
@@ -28,7 +28,7 @@
  //$Numbers->view_outgoingcallerid( 'PNd1d357538b75bd810b6292f1c537efe9' );
  //$Numbers->edit_outgoingcallerid( array('FriendlyName' => 'George Mobile'), 'PNd1d357538b75bd810b6292f1c537efe9' );
  
- //$Calls->make_call( '+447757765484', '+447757765484', 'http://www.torinet.co.uk/twilio/callbacks/make_call.php', array('Record' => 'True'));
+ //$Calls->make_call( '+447757765484', '+447757765484', 'http://www.torinet.co.uk/twilio/callbacks/make_call.php');
  //$Calls->get_call_details( 'CAb34eadb826c97af6bab99e2fe359a4bb' );
  //$Calls->get_call_recordings( array(), 'CAb34eadb826c97af6bab99e2fe359a4bb' );
  //$Calls->get_call_recording_transcription( 'RE00f22810a69a1d219df91996b9c2e73f' );
@@ -43,6 +43,8 @@
  //$Queues->get_front_member( 'QU2534ed1fdb3b4a55b16c26ba57be28e2' );
  //$Queues->get_all_members( 'QU2534ed1fdb3b4a55b16c26ba57be28e2' );
  //$Queues->wallboard( 'QU2534ed1fdb3b4a55b16c26ba57be28e2' );
+ 
+ 
  
  
  

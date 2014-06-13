@@ -28,6 +28,8 @@
  include_once "resources/Numbers.php";
  include_once "resources/Calls.php";
  include_once "resources/Queues.php";
+ include_once "resources/Conferences.php";
+ include_once "resources/Usage.php";
  
  //Initialise instances of API classes
  $ErrorHandler = new ErrorHandler();
@@ -37,6 +39,8 @@
  $Numbers = new Numbers();
  $Calls = new Calls();
  $Queues = new Queues();
+ $Conferences = new Conferences();
+ $Usagw = new Usage();
 
 
 ?>
